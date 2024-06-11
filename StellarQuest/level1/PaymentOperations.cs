@@ -28,7 +28,7 @@ namespace StellarQuest.level1
 
                 var server = new Server(TestServerUri);
                 var questAccountResponse = await server.Accounts.Account(questKeypair.AccountId);
-                var questinAccount = await server.Accounts.Account(questAccountResponse.AccountId);
+                var questAccount = await server.Accounts.Account(questAccountResponse.AccountId);
 
 
 
@@ -38,7 +38,7 @@ namespace StellarQuest.level1
                 //    networkPassphrase: Networks.TESTNET
                 //  })
 
-                var transactionBuilder = new TransactionBuilder(questinAccount);
+                var transactionBuilder = new TransactionBuilder(questAccount);
                 transactionBuilder.SetFee(BaseFee);
                 // network can be set right here:
                 // Network.UseTestNetwork();
@@ -119,8 +119,8 @@ namespace StellarQuest.level1
                 //const questAccount = await server.loadAccount(questKeypair.publicKey())
 
                 var server = new Server(TestServerUri);
-                var accountResponse = await server.Accounts.Account(questKeypair.AccountId);
-                var questAccount = await server.Accounts.Account(accountResponse.AccountId);
+                var questAccountResponse = await server.Accounts.Account(questKeypair.AccountId);
+                var questAccount = await server.Accounts.Account(questAccountResponse.AccountId);
 
 
 
@@ -137,7 +137,7 @@ namespace StellarQuest.level1
                 // .setTimeout(30)
                 // .build()
 
-                var transaction = new TransactionBuilder(accountResponse)
+                var transaction = new TransactionBuilder(questAccountResponse)
                     .SetFee(BaseFee)
                     .AddOperation(new PaymentOperation(
                         destination: KeyPair.FromAccountId(destinationKeypair.AccountId),
